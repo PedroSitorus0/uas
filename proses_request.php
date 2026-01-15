@@ -1,39 +1,39 @@
 <?php
-// Aktifkan laporan error agar ketahuan jika ada masalah (bukan cuma error 500)
-mysqli_report(MYSQLI_REPORT_OFF); // Matikan strict mode exception biar error muncul sebagai teks biasa
+session_start(); // [PENTING] Aktifkan session untuk mengambil ID user yang login
+mysqli_report(MYSQLI_REPORT_OFF);
 include 'koneksi.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Ambil data dari form
+    // 1. Cek apakah user sedang login?
+    $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "NULL"; 
+    // Jika login, ambil ID-nya. Jika tidak, set NULL (tamu).
+
     $nama   = $_POST['nama'];
     $email  = $_POST['email'];
     $nohp   = $_POST['nohp'];
-    $ig     = isset($_POST['ig']) ? $_POST['ig'] : '-'; // Tambahan untuk IG (opsional)
+    $ig     = isset($_POST['ig']) ? $_POST['ig'] : '-';
     $chara  = $_POST['chara'];
     $game   = $_POST['game'];
-    
-    // Cek apakah radio button gender dipilih
-    $gender = isset($_POST['gender']) ? $_POST['gender'] : ''; 
+    $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
     $alasan = $_POST['alasan'];
 
-    // Validasi sederhana di PHP (karena JS dimatikan)
-    if(empty($nama) || empty($chara) || empty($game)) {
-        echo "<script>alert('Mohon lengkapi data!'); window.history.back();</script>";
-        exit;
+    // 2. Query Insert (Tambahkan kolom user_id)
+    // Perhatikan bagian VALUES: $user_id tidak pakai kutip jika dia NULL, tapi variabel PHP menanganinya.
+    // Trik aman: masukkan variabel langsung di string query jika isinya angka. 
+    
+    if ($user_id === "NULL") {
+        $query = "INSERT INTO requests (user_id, nama_pengunjung, email, no_hp, instagram, nama_karakter_req, nama_band_req, gender, alasan, status) 
+                  VALUES (NULL, '$nama', '$email', '$nohp', '$ig', '$chara', '$game', '$gender', '$alasan', 'pending')";
+    } else {
+        $query = "INSERT INTO requests (user_id, nama_pengunjung, email, no_hp, instagram, nama_karakter_req, nama_band_req, gender, alasan, status) 
+                  VALUES ('$user_id', '$nama', '$email', '$nohp', '$ig', '$chara', '$game', '$gender', '$alasan', 'pending')";
     }
 
-    // PERBAIKAN UTAMA DISINI: Sesuaikan nama kolom dengan Database
-    // Format: INSERT INTO nama_tabel (kolom_db1, kolom_db2, ...) VALUES ('$var1', '$var2', ...)
-    $query = "INSERT INTO requests (nama_pengunjung, email, no_hp, instagram, nama_karakter_req, nama_band_req, gender, alasan, status) 
-              VALUES ('$nama', '$email', '$nohp', '$ig', '$chara', '$game', '$gender', '$alasan', 'pending')";
-
     if (mysqli_query($conn, $query)) {
-        // Jika berhasil
-        echo "<script>alert('Data berhasil disimpan ke Database!'); window.location='tabel.php';</script>";
+        // Redirect balik ke form atau tabel request
+        echo "<script>alert('Request Terkirim!'); window.location='tabel.php';</script>";
     } else {
-        // Jika gagal, tampilkan pesan error spesifik
-        echo "Gagal menyimpan data!<br>";
-        echo "Error MySQL: " . mysqli_error($conn);
+        echo "Gagal: " . mysqli_error($conn);
     }
 }
 ?>
