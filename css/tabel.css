@@ -1,0 +1,63 @@
+
+
+/* 1. Container Agar Bisa Scroll di HP (Syarat Responsif)  */
+.table-responsive {
+    overflow-x: auto; /* Munculkan scrollbar menyamping jika layar sempit */
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* 2. Desain Dasar Tabel */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse; /* Agar garis tabel menyatu rapi */
+    background-color: rgb(254, 254, 254);
+    min-width: 600px; /* Lebar minimal agar tabel tidak hancur di HP */
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px; 
+    white-space: nowrap;
+}
+
+.custom-table th, 
+.custom-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #fcfcfc;
+    text-align: center;
+}
+
+/* 3. Styling Header (Thead)  */
+.custom-table thead {
+    background-color: #FF3377; 
+    color: white;
+}
+
+.custom-table th {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+
+.avatar-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; 
+    object-fit: cover;
+    border: 2px solid #FF3377;
+}
+
+
+
+.custom-table tbody tr:hover {
+    background-color: #ffeef5; /* Berubah pink muda saat disorot */
+    transform: scale(1.01); /* Sedikit membesar (opsional, efek card) */
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+

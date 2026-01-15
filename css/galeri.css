@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    padding-bottom: 50px; /* Ruang di bawah agar tidak mepet */
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    background-color: #FF3377;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.logo {
+    color: #FFDDEE;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #f1c40f; /* Warna kuning saat aktif/hover */
+}
+
+
+
+
+
+main{ padding:40px 0 120px 0; background:#ffffff; }
+
+.cards{
+  display:flex;
+  gap:18px;
+  justify-content:center;
+  margin-top:24px;
+  flex-wrap:wrap;
+} 
+
+.program {
+    text-align: center;
+  margin-top: 60px;
+}
+
+.program h2 {
+  font-size: 28px;
+  color: #FF3377;
+  margin-bottom: 50px;
+}
+
+.program p {
+  color: #555;
+  margin-bottom: 40px;
+  font-size: 15px;
+}
+
+/* Area kartu */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Tampilan kartu */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+  color: #1a2a3a;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card ul {
+  text-align: left;
+  padding-left: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+  @media (max-width: 768px) {
+      .navbar {
+          flex-direction: column;
+          text-align: center;
+      }
+  
+      .nav-links {
+          margin-top: 15px;
+          flex-direction: column;
+          gap: 10px;
+      }
+  }

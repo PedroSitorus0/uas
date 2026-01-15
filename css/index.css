@@ -1,0 +1,294 @@
+:root {
+    /* Warna Light Mode */
+    --bg-body: #f4f4f9;
+    --bg-card: #ffffff;
+    --text-main: #333333;
+    --text-secondary: #666666;
+    --accent: #007bff; /* Warna biru untuk link/tombol */
+    
+    /* Warna Dark Mode */
+    --bg-body-dark: #1a1a1a;
+    --bg-card-dark: #2d2d2d;
+    --text-main-dark: #e0e0e0;
+    --text-secondary-dark: #aaaaaa;
+}
+
+.navbar {
+    background-color: #e1306b06;
+    padding: 5px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(204, 205, 180, 0.257);
+    border-radius: 25px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    transition: background 1.3s, color 1.3s;
+}
+
+/* --- KONFIGURASI TEMA --- */
+body.light-mode {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+}
+body.dark-mode {
+    background-color: var(--bg-body-dark);
+    color: var(--text-main-dark);
+}
+
+/* --- 1. HERO BANNER (FOTO LEBAR) --- */
+.hero-banner {
+    width: 100%;
+    height: 400px; /* Tinggi foto header */
+    
+    
+    background-image: url(https://en.bang-dream.com/wordpress/wp-content/uploads/20221003211903/BGD_OS_HPheader_TOP_PC-3.jpg); 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.339); 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.logo {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.hero-text {
+    color: #f8f8f8;
+    margin-bottom: 25px;
+    max-width: 1200px;
+}
+
+.hero-text h2 {
+    font-size: 3rem;
+    margin: 0 0 10px 0;
+}
+
+/* --- 2. NEWS GRID --- */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.section-title {
+    border-left: 5px solid var(--accent);
+    padding-left: 15px;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+}
+
+.news-grid {
+    display: grid;
+    /* Membuat kolom otomatis (responsif) */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px;
+}
+
+.news-card {
+    background-color: var(--bg-card);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s, background 0.5s;
+}
+
+/* Style khusus Card di Dark Mode */
+body.dark-mode .news-card {
+    background-color: var(--bg-card-dark);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-content {
+    padding: 25px;
+}
+
+.category {
+    background-color: var(--accent);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.news-content h4 {
+    margin: 15px 0 10px 0;
+    font-size: 1.3rem;
+}
+
+.news-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+body.dark-mode .news-content p {
+    color: var(--text-secondary-dark);
+}
+
+.read-more {
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* --- TOMBOL TOGGLE (Sama seperti sebelumnya) --- */
+.theme-toggle-btn {
+    background: rgba(245, 245, 245, 0);
+    border: 1px solid rgba(255, 255, 255, 0.305);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+.theme-toggle-btn:hover { background: rgba(255, 255, 255, 0.37); }
+.icon { font-size: 1.2rem; }
+.dark-icon { display: none; }
+body.dark-mode .light-icon { display: none; }
+body.dark-mode .dark-icon { display: block; }
+
+
+.navbaratas {
+    background-color: #FF3377;
+    padding: 3.5px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: none;
+}
+
+.logoatas {
+    color: #FFDDEE;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.nav-linksatas {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-linksatas a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-linksatas a:hover, .nav-linksatas a.active {
+    color: #f1c40f; /* Warna kuning saat aktif/hover */
+}
+
+
+@media (max-width: 768px) {
+.navbar {
+    text-align: center;
+    padding: 5px 15%;
+}
+
+    /* --- 1. NAVBAR ATAS (PINK - UTAMA) --- */
+.navbaratas {
+    background-color: #FF3377;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between; /* Logo kiri, Menu kanan */
+    align-items: center; /* Pastikan vertikal di tengah */
+    position: static; 
+    flex-direction: column;/* Ubah jadi tumpuk ke bawah */
+}
+
+.logoatas {
+    color: #FFDDEE;
+    font-size: 24px;
+}
+
+.nav-linksatas {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Jarak antar menu */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-linksatas a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-linksatas a:hover, .nav-linksatas a.active {
+    color: #f1c40f; /* Warna kuning saat hover */
+}
+
+
+/* --- 2. NAVBAR TOGGLE THEME (Matahari/Bulan) --- */
+/* Ini navbar yang ada di dalam foto (Hero) */
+.navbar {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end; /* Tombol geser ke kanan */
+    align-items: center;
+    border-radius: 25px;
+    margin-top: 20px; /* Jarak dari atas overlay */
+}
+
+.navbaratas {
+        flex-direction: column;
+         /* Ubah jadi tumpuk ke bawah */
+        text-align: center;
+        padding: 15px;
+    }
+
+    .nav-linksatas {
+        flex-direction: column; /* Menu tumpuk ke bawah */
+        gap: 10px;
+        margin-top: 15px; /* Jarak antara Logo dan Menu */
+        width: 100%;
+    }
+
+    /* Mengatur Navbar Toggle (Matahari) agar rapi di HP */
+    .navbar {
+        justify-content: space-between; /* Tombol ke tengah di HP */
+    }
+    
+    .hero-text h2 {
+        font-size: 2rem; /* Kecilkan font judul di HP */
+    }
+
+    .container {
+        width: 90%;
+        margin: 20px auto;
+    }
+}
+
