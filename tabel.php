@@ -1,3 +1,23 @@
+<?php include 'koneksi.php'; 
+      include 'components/navbar.php';
+
+?>
+<tbody>
+    <?php
+    $result = mysqli_query($conn, "SELECT * FROM characters"); // Asumsi tabel characters ada isinya
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>";
+        echo "<td><img src='img/" . $row['gambar'] . "' class='avatar-img'></td>";
+        echo "<td>" . $row['nama_karakter'] . "</td>";
+        echo "<td>" . $row['band'] . "</td>";
+        echo "<td>" . $row['role'] . "</td>";
+        echo "<td>" . $row['instrumen'] . "</td>";
+        echo "</tr>";
+    }
+    ?>
+
+</tbody>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +28,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav class="navbar">
+    <!-- <nav class="navbar">
         <div class="logo">Wiki Character</div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -17,7 +37,7 @@
             <li><a href="tabel.html" class="active">Card</a></li>
             <li><a href=".">Follow Me</a></li>
         </ul>
-    </nav>
+    </nav> -->
 
     <div class="container">
         <h2 class="section-title">Database Karakter</h2>

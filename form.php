@@ -1,3 +1,6 @@
+<?php 
+    include 'koneksi.php'; 
+?>
 <!DOCTYPE html>
 <html lang="id">
     <head>
@@ -6,10 +9,10 @@
         <title>BanG Dream - Wiki Game</title>
         <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js"></script>
-</head>
-<body>
-    
-    <nav class="navbar">
+    </head>
+    <body>
+        <?php include 'components/navbar.php'; ?>
+    <!-- <nav class="navbar">
         <div class="logo">Wiki Character</div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -18,14 +21,13 @@
             <li><a href="tabel.html">Card</a></li>
             <li><a href=".">Follow Me</a></li>
         </ul>
-    </nav>
+    </nav> -->
 
     <div class="container">
         <h2>Request Character Baru</h2>
         <p>Isi Form Ini Untuk Memberikan Saran Karakter Yang Harus Ditambahkan Kepada Saya!</p>
 
-        <form id="requestForm" novalidate>
-            
+        <form action="proses_request.php" method="$_POST" id="requestForm">
             <div class="form-group">
                 <label for="nama">Nama Pengunjung:</label>
                 <input type="text" id="nama" name="nama" placeholder="Masukan Nama Anda" required>

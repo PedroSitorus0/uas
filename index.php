@@ -8,7 +8,8 @@
 </head>
 
 <body>
-    <nav class="navbaratas">
+    <?php include 'components/navbar_index.php'; ?>
+    <!-- <nav class="navbaratas">
         <div class="logoatas">Wiki Character</div>
         
         <ul class="nav-linksatas">
@@ -18,7 +19,7 @@
             <li><a href="tabel.html">Card</a></li>
             <li><a href=".">Follow Me</a></li>
         </ul>
-    </nav>
+    </nav> -->
     <body class="light-mode">
 
     <header class="hero-banner">

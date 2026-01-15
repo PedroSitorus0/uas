@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="css/galeri.css">
 </head>
 <body>
-    <nav class="navbar">
+    <?php include 'components/navbar.php'; ?>
+
+    <!-- <nav class="navbar">
         <div class="logo">Wiki Character</div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -16,7 +18,7 @@
             <li><a href="tabel.html">Card</a></li>
             <li><a href=".">Follow Me</a></li>
         </ul>
-    </nav>
+    </nav> -->
 
     <main>
     <section class="program">
