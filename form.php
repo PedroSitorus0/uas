@@ -26,8 +26,7 @@
     <div class="container">
         <h2>Request Character Baru</h2>
         <p>Isi Form Ini Untuk Memberikan Saran Karakter Yang Harus Ditambahkan Kepada Saya!</p>
-
-        <form action="proses_request.php" method="$_POST" id="requestForm">
+        <form action="proses_request.php" method="post" id="requestForm">
             <div class="form-group">
                 <label for="nama">Nama Pengunjung:</label>
                 <input type="text" id="nama" name="nama" placeholder="Masukan Nama Anda" required>
@@ -50,7 +49,7 @@
 
             <div class="form-group">
                 <label for="chara">Nama Karakter:</label>
-                <input type="text" id="chara" name="c hara" placeholder="Masukan Nama karakter" required>
+                <input type="text" id="chara" name="chara" placeholder="Masukan Nama karakter" required>
             </div>
 
             <div class="form-group">

@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         form.addEventListener('submit', function(event) {
             
             // Mencegah browser refresh otomatis
-            event.preventDefault();
+            // event.preventDefault();
 
             // 1. Ambil Nilai dari Input
             const nama      = document.getElementById('nama').value.trim(); // .trim() menghapus spasi di awal/akhir
