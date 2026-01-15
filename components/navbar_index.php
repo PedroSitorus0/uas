@@ -4,6 +4,6 @@
         <li><a href="galeri.php">Galeri</a></li>
         <li><a href="form.php">Form</a></li> 
         <li><a href="tabel.php">Card</a></li>
-        <li><a href=".">Follow Me</a></li>
+        <li><a href="akun.php">Account</a></li>
     </ul>
 </nav>

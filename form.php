@@ -8,25 +8,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BanG Dream - Wiki Game</title>
         <link rel="stylesheet" href="css/style.css">
-        <script src="js/script.js"></script>
     </head>
     <body>
         <?php include 'components/navbar.php'; ?>
-    <!-- <nav class="navbar">
-        <div class="logo">Wiki Character</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="galeri.html">Galeri</a></li>
-            <li><a href="form.html" class="active">Form</a></li> 
-            <li><a href="tabel.html">Card</a></li>
-            <li><a href=".">Follow Me</a></li>
-        </ul>
-    </nav> -->
 
     <div class="container">
         <h2>Request Character Baru</h2>
         <p>Isi Form Ini Untuk Memberikan Saran Karakter Yang Harus Ditambahkan Kepada Saya!</p>
-        <form action="proses_request.php" method="post" id="requestForm">
+        <form action="proses_request.php" method="POST" id="requestForm">
             <div class="form-group">
                 <label for="nama">Nama Pengunjung:</label>
                 <input type="text" id="nama" name="nama" placeholder="Masukan Nama Anda" required>
