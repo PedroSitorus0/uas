@@ -1,22 +1,11 @@
-<?php include 'koneksi.php'; 
-      include 'components/navbar.php';
-
+<?php 
+    include 'koneksi.php'; 
+    include 'components/navbar.php';
+    session_start();
 ?>
-<tbody>
-    <?php
-    $result = mysqli_query($conn, "SELECT * FROM characters"); // Asumsi tabel characters ada isinya
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
-        echo "<td><img src='img/" . $row['gambar'] . "' class='avatar-img'></td>";
-        echo "<td>" . $row['nama_karakter'] . "</td>";
-        echo "<td>" . $row['band'] . "</td>";
-        echo "<td>" . $row['role'] . "</td>";
-        echo "<td>" . $row['instrumen'] . "</td>";
-        echo "</tr>";
-    }
-    ?>
 
-</tbody>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,18 +17,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- <nav class="navbar">
-        <div class="logo">Wiki Character</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="galeri.html">Galeri</a></li>
-            <li><a href="form.html" >Form</a></li> 
-            <li><a href="tabel.html" class="active">Card</a></li>
-            <li><a href=".">Follow Me</a></li>
-        </ul>
-    </nav> -->
-
-    <div class="container">
+    <!-- <div class="container">
         <h2 class="section-title">Database Karakter</h2>
         <p style="text-align: center; margin-bottom: 20px;">Daftar statistik lengkap member band BanG Dream.</p>
 
@@ -112,6 +90,52 @@
                 </tbody>
             </table>
         </div>
+    </div> -->
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 class="section-title">Database Karakter</h2>
+        
+        <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
+            <a href="tambah_karakter.php" class="btn-submit" style="width: auto; padding: 10px 20px; background-color: #2ecc71; text-decoration: none;">+ Tambah Karakter</a>
+        <?php endif; ?>
     </div>
+
+    <div class="table-responsive">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Avatar</th>
+                    <th>Nama Karakter</th>
+                    <th>Band</th>
+                    <th>Role</th> 
+                    <th>Instrumen</th>     
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Ambil data dari tabel characters (bukan requests)
+                $query = "SELECT * FROM characters ORDER BY id DESC";
+                $result = mysqli_query($conn, $query);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        // Tampilkan Gambar: Gabungkan path 'img/' dengan nama file dari DB
+                        echo "<td><img src='img/" . htmlspecialchars($row['gambar']) . "' class='avatar-img'></td>";
+                        
+                        echo "<td>" . htmlspecialchars($row['nama_karakter']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['band']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['role']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['instrumen']) . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='5' style='text-align:center'>Belum ada data karakter.</td></tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>

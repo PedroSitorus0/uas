@@ -7,28 +7,24 @@ $success = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $email    = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = $_POST['password'];
+    $password = $_POST['password']; // Ambil password mentah
     $confirm  = $_POST['confirm_password'];
 
-    // 1. Validasi Password
     if ($password !== $confirm) {
         $error = "Konfirmasi password tidak cocok!";
     } else {
-        // 2. Cek apakah Username / Email sudah ada
-        $cek_user = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username' OR email = '$email'");
+        $cek_user = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
         if (mysqli_num_rows($cek_user) > 0) {
-            $error = "Username atau Email sudah terdaftar!";
+            $error = "Username sudah terdaftar!";
         } else {
-            // 3. Hash Password (Enkripsi)
-            $password_hash = password_hash($password, PASSWORD_DEFAULT);
-
-            // 4. Masukkan ke Database (Role default 'user')
-            $query = "INSERT INTO users (username, email, password, role) VALUES ('$username', '$email', '$password_hash', 'user')";
+            // PERUBAHAN DISINI: Jangan pakai password_hash!
+            // Langsung masukkan $password asli ke query
+            $query = "INSERT INTO users (username, email, password, role) VALUES ('$username', '$email', '$password', 'user')";
             
             if (mysqli_query($conn, $query)) {
-                $success = "Registrasi berhasil! Silakan <a href='login.php'>Login disini</a>.";
+                $success = "Registrasi berhasil! Silakan login.";
             } else {
-                $error = "Terjadi kesalahan: " . mysqli_error($conn);
+                $error = "Gagal: " . mysqli_error($conn);
             }
         }
     }

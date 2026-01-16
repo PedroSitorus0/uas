@@ -37,7 +37,14 @@ $result_history = mysqli_query($conn, $query_history);
                 <h2 style="color: #FF3377;">Halo, <?php echo htmlspecialchars($user_data['username']); ?>!</h2>
                 <p>Status: <strong><?php echo ucfirst($user_data['role']); ?></strong> | Email: <?php echo htmlspecialchars($user_data['email']); ?></p>
             </div>
-            <a href="logout.php" class="btn-submit" style="background-color: #e74c3c; width: auto; padding: 10px 20px; text-decoration: none;">Logout</a>
+            
+            <div style="display: flex; gap: 10px;">
+                <?php if($user_data['role'] == 'admin'): ?>
+                    <a href="admin.php" class="btn-submit" style="background-color: #2ecc71; width: auto; padding: 10px 20px; text-decoration: none;">Kelola Request</a>
+                <?php endif; ?>
+
+                <a href="logout.php" class="btn-submit" style="background-color: #e74c3c; width: auto; padding: 10px 20px; text-decoration: none;">Logout</a>
+            </div>
         </div>
 
         <h3 style="margin-bottom: 15px; color: #333;">Riwayat Request Karakter Anda</h3>

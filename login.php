@@ -9,6 +9,7 @@ if (isset($_SESSION['user_id'])) {
 }
 
 $error = "";
+$success = "";
 
 // Proses Login saat tombol ditekan
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,6 +31,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['role'] = $row['role'];
 
             // Redirect sesuai role (Opsional, saat ini semua ke akun.php)
+            header("Location: akun.php");
+            exit();
+        } else {
+            $error = "Password salah!";
+        }
+    } else {
+        $error = "Username tidak ditemukan!";
+    }
+
+    $sql = "SELECT * FROM users WHERE username = '$username'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
+        
+        // PERUBAHAN DISINI: Bandingkan langsung text vs text
+        if ($password == $row['password']) {
+            
+            // Login Sukses
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['role'] = $row['role'];
+
             header("Location: akun.php");
             exit();
         } else {
