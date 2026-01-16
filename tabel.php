@@ -17,86 +17,12 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- <div class="container">
-        <h2 class="section-title">Database Karakter</h2>
-        <p style="text-align: center; margin-bottom: 20px;">Daftar statistik lengkap member band BanG Dream.</p>
-
-        <div class="table-responsive">
-            <table class="custom-table">
-                <thead>
-                    <tr>
-                        <th>Avatar</th>
-                        <th>Nama Karakter</th>
-                        <th>Band</th>
-                        <th>Posisi / Role</th> 
-                        <th>Instrumen</th>     
-                    </tr>
-                </thead>
-                
-                <tbody>
-                    <tr>
-                        <td><img src="img/790Kasumi-Toyama-Cool-Attack-Santa-ldMNGk.png" class="avatar-img" alt="Kasumi"></td>
-                        <td>Kasumi Toyama</td>
-                        <td>Poppin'Party</td>
-                        <td>Vocal & Guitar</td>
-                        <td>Random Star</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="img/1063Ran-Mitake-Pure-yQCu2u.png" class="avatar-img" alt="Ran"></td>
-                        <td>Ran Mitake</td>
-                        <td>Afterglow</td>
-                        <td>Vocal & Guitar</td>
-                        <td>Gibson Les Paul</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="img/1030Yukina-Minato-Cool-XfjyW9.png" class="avatar-img" alt="Yukina"></td>
-                        <td>Yukina Minato</td>
-                        <td>Roselia</td>
-                        <td>Vocal</td>
-                        <td>Microphone</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="img/561Aya-Maruyama-Power-In-Charge-of-Pink-osJDtc.png" class="avatar-img" alt="Aya"></td>
-                        <td>Aya Maruyama</td>
-                        <td>Pastel＊Palettes</td>
-                        <td>Vocal</td>
-                        <td>Idol Mic</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="img/4235Kokoro-Tsurumaki-Cool-One-Serving-of-Youth-g2P1xm.png" class="avatar-img" alt="Kokoro"></td>
-                        <td>Kokoro Tsurumaki</td>
-                        <td>Hello, Happy World!</td>
-                        <td>Vocal</td>
-                        <td>Baton</td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/5181Mashiro-Kurata-Power-A-Corageous-Step-WRTo3V.png" class="avatar-img" alt="Mashiro"></td>
-                        <td>Mashiro Kurata</td>
-                        <td>Morfonica</td>
-                        <td>Vocal</td>
-                        <td>Microphone</td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/90028Nanami-Hiromachi-Pure-Stella-Polaris-bkzFQm.png" class="avatar-img" alt="Mashiro"></td>
-                        <td>Namani Hiromachi</td>
-                        <td>Morfonica</td>
-                        <td>Bassist</td>
-                        <td>ESP BOTTOM BUMP PJ NANAMI</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div> -->
     <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h2 class="section-title">Database Karakter</h2>
+        <h2 class="section-title">Database Karakter</h2>
         
         <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
-            <a href="tambah_karakter.php" class="btn-submit" style="width: auto; padding: 10px 20px; background-color: #2ecc71; text-decoration: none;">+ Tambah Karakter</a>
+            <a href="tambah_karakter.php" class="btn-submit" style="width: auto; margin-bottom: 20px ;padding: 10px 20px; background-color: #2ecc71; text-decoration: none;">+ Tambah Karakter</a>
         <?php endif; ?>
     </div>
 
@@ -113,20 +39,36 @@
             </thead>
             <tbody>
                 <?php
-                // Ambil data dari tabel characters (bukan requests)
-                $query = "SELECT * FROM characters ORDER BY id DESC";
+                // QUERY PENTING: Gunakan JOIN untuk mengambil nama band dari tabel 'bands'
+                // Kita gabungkan tabel 'characters' dengan 'bands' berdasarkan id-nya
+                $query = "SELECT characters.*, bands.nama_band 
+                          FROM characters 
+                          JOIN bands ON characters.band_id = bands.id 
+                          ORDER BY characters.id DESC";
+                
                 $result = mysqli_query($conn, $query);
 
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
-                        // Tampilkan Gambar: Gabungkan path 'img/' dengan nama file dari DB
-                        echo "<td><img src='img/" . htmlspecialchars($row['gambar']) . "' class='avatar-img'></td>";
                         
+                        // 1. FOTO (Gunakan 'gambar_avatar' sesuai database)
+                        // Cek apakah ada fotonya? Jika kosong pakai placeholder
+                        $foto = !empty($row['gambar_avatar']) ? $row['gambar_avatar'] : 'default.png';
+                        echo "<td><img src='img/" . htmlspecialchars($foto) . "' class='avatar-img' alt='Avatar'></td>";
+                        
+                        // 2. NAMA KARAKTER
                         echo "<td>" . htmlspecialchars($row['nama_karakter']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['band']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['role']) . "</td>";
+                        
+                        // 3. NAMA BAND (Diambil dari tabel bands via JOIN)
+                        echo "<td>" . htmlspecialchars($row['nama_band']) . "</td>";
+                        
+                        // 4. ROLE (Gunakan 'role_posisi' sesuai database)
+                        echo "<td>" . htmlspecialchars($row['role_posisi']) . "</td>";
+                        
+                        // 5. INSTRUMEN
                         echo "<td>" . htmlspecialchars($row['instrumen']) . "</td>";
+                        
                         echo "</tr>";
                     }
                 } else {
