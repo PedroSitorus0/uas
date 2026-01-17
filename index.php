@@ -27,8 +27,8 @@
             <div class="navbar">
                 <h1 class="logo">Home</h1>
                 <button id="theme-toggle" class="theme-toggle-btn">
-                    <span class="icon light-icon">☀️</span>
-                    <span class="icon dark-icon">🌙</span>
+                    <img src="img/hina.webp"  class="icon light-icon"></img>
+                    <img  src="img/sayo.webp" class="icon dark-icon"></img>
                 </button>
             </div>
             <div class="hero-text">

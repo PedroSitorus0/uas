@@ -4,7 +4,6 @@ include 'koneksi.php';
 
 // 1. KEAMANAN: Cek apakah user sudah login DAN role-nya admin
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
-    // Jika bukan admin, tendang ke akun.php atau login
     echo "<script>alert('Anda bukan Admin!'); window.location='akun.php';</script>";
     exit();
 }
@@ -29,7 +28,18 @@ $result = mysqli_query($conn, $query);
     <div class="container" style="max-width: 1000px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h2 style="color: #FF3377;">Dashboard Admin</h2>
-            <a href="akun.php" style="color: #333; text-decoration: none;">&larr; Kembali ke Profil</a>
+            
+            <div style="display: flex; gap: 10px;">
+                <a href="export_pdf.php" target="_blank" class="btn-submit" style="background-color: #e74c3c; width: auto; padding: 10px 15px; text-decoration: none; font-size: 14px;">
+                    Export PDF
+                </a>
+                
+                <a href="export_excel.php" target="_blank" class="btn-submit" style="background-color: #27ae60; width: auto; padding: 10px 15px; text-decoration: none; font-size: 14px;">
+                    Export Excel
+                </a>
+
+                <a href="akun.php" class="btn-submit" style="background-color: #EE7744; width: auto; padding: 10px 15px; text-decoration: none; font-size: 14px;">Kembali</a>
+            </div>
         </div>
 
         <div class="table-responsive">
