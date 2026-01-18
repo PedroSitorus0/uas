@@ -36,9 +36,12 @@ include 'koneksi.php';
     <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h2 class="section-title">Database Karakter</h2>
-            
             <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
-                <a href="tambah_karakter.php" class="btn-submit" style="width: auto; padding: 10px 20px; background-color: #2ecc71; text-decoration: none;">+ Tambah Karakter</a>
+            <div style="display: flex; gap: 10px;">
+                    <a href="export_char_pdf.php" target="_blank" class="btn-submit" style="background: #e74c3c; width: auto; padding: 10px 15px; text-decoration: none;">PDF</a>
+                    <a href="export_char_excel.php" target="_blank" class="btn-submit" style="background: #27ae60; width: auto; padding: 10px 15px; text-decoration: none;">Excel</a>
+                    <a href="tambah_karakter.php" class="btn-submit" style="width: auto; padding: 10px 20px; background-color: #2ecc71; text-decoration: none;">+ Tambah Karakter</a>
+            </div>
             <?php endif; ?>
         </div>
 

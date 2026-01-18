@@ -1,12 +1,12 @@
 <?php
 session_start();
-include 'koneksi.php'; // Pastikan file koneksi.php sudah ada
+include 'koneksi.php';
 
 // Jika sudah login, lempar ke akun.php
 if (isset($_SESSION['user_id'])) {
     header("Location: akun.php");
     exit();
-}
+} 
 
 $error = "";
 $success = "";

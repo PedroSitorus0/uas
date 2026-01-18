@@ -1,12 +1,16 @@
 <?php
-$host = "localhost";
+$host = "127.0.0.1";
 $user = "root";
 $pass = "";
-$db   = "db_wiki_character"; // Buat database ini di phpMyAdmin
+$db   = "db_wiki_character"; 
+$port = 3307;
+$socket = "/opt/lampp/var/mysql/mysql.sock";
 
-$conn = mysqli_connect($host, $user, $pass, $db);
+$conn = mysqli_connect($host, $user, $pass, $db, $port, $socket);
 
 if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
+} else {
+    // echo "koneksi berhasil";
 }
 ?>
