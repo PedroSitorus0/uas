@@ -1,7 +1,7 @@
 <?php 
 // 1. Session start WAJIB paling atas sebelum include apapun yang butuh sesi
 session_start();
-include 'koneksi.php'; 
+require_once 'koneksi.php'; 
 ?>
 
 <!DOCTYPE html>
