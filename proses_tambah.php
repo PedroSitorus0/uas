@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Error: Band '$band_nama' tidak ditemukan di database master Band. Pastikan ejaan sama.");
     }
     
-    $band_id = $band_data['id']; // Ini ID yang akan kita simpan (contoh: 2)
+    $band_id = $band_data['id'];
 
     // --- LOGIKA UPLOAD FOTO ---
     if ($_FILES['foto']['error'] !== UPLOAD_ERR_OK) {
