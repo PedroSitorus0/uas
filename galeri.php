@@ -8,9 +8,15 @@
             die();
         }
     
+<<<<<<< HEAD
     // infokan makan siang gratis wok
     ?>
 
+=======
+    
+    ?>
+    
+>>>>>>> 934f602ab7f3c97170f36530de57daddb7a2b83f
 <!DOCTYPE html>
 <html lang="id">
 <head>
