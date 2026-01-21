@@ -16,8 +16,11 @@ $result_user = mysqli_query($conn, $query_user);
 $user_data = mysqli_fetch_assoc($result_user);
 
 // 2. AMBIL DATA REQUEST (Relasi: Request milik User ini saja)
-$query_history = "SELECT * FROM requests WHERE user_id = '$user_id' ORDER BY created_at DESC";
+$query_history = "SELECT * FROM requests WHERE user_id = '$user_id' ORDER BY created_at ASC";
 $result_history = mysqli_query($conn, $query_history);
+
+// echo $user_id;
+// echo $user_data;
 ?>
 
 <!DOCTYPE html>

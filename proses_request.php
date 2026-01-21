@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama   = mysqli_real_escape_string($conn, $_POST['nama']);
     $email  = mysqli_real_escape_string($conn, $_POST['email']);
     $nohp   = mysqli_real_escape_string($conn, $_POST['nohp']);
-    $ig     = isset($_POST['ig']) ? mysqli_real_escape_string($conn, $_POST['ig']) : '-';
+    $ig     = mysqli_real_escape_string($conn, $_POST['ig'] ?? '-');
     $chara  = mysqli_real_escape_string($conn, $_POST['chara']);
     
     // DISINI MASALAHNYA TADI: "Poppin' Party" sekarang aman
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (mysqli_query($conn, $query)) {
-        echo "<script>alert('Request Terkirim!'); window.location='tabel.php';</script>";
+        echo "<script>alert('Request Terkirim!'); window.location='akun.php';</script>";
     } else {
         // Tampilkan error jika masih ada masalah lain
         echo "Gagal: " . mysqli_error($conn);
