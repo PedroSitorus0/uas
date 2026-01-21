@@ -1,3 +1,16 @@
+    <?php 
+        session_start();
+        require 'koneksi.php';
+        include 'components/navbar.php';
+    
+        if (!isset($_SESSION['user_id'])) {
+            header ("Location: login.php");
+            die();
+        }
+    
+    
+    ?>
+    
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -7,7 +20,6 @@
     <link rel="stylesheet" href="css/galeri.css">
 </head>
 <body>
-    <?php include 'components/navbar.php'; ?>
 
     <!-- <nav class="navbar">
         <div class="logo">Wiki Character</div>

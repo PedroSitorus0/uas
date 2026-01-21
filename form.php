@@ -1,5 +1,10 @@
 <?php 
-    include 'koneksi.php'; 
+    require_once 'koneksi.php'; 
+    header ("Location: login.php");
+    if (!isset($_SESSION['user_id'])) {
+    }
+    die();
+    
 ?>
 <!DOCTYPE html>
 <html lang="id">
