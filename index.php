@@ -1,3 +1,8 @@
+    <?php 
+        include 'components/navbar_index.php'; 
+        require 'koneksi.php';
+        ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +13,6 @@
 </head>
 
 <body>
-    <?php include 'components/navbar_index.php'; ?>
     <!-- <nav class="navbaratas">
         <div class="logoatas">Wiki Character</div>
         
