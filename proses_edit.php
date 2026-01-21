@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $band_id = $d_band['id'];
 
     // 3. LOGIKA FOTO: Ganti Baru atau Pakai Lama?
-    
     // Cek apakah user mengupload file baru?
     if (!empty($_FILES['foto']['name'])) {
         // --- JIKA UPLOAD BARU ---

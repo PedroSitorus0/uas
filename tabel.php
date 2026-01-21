@@ -62,6 +62,7 @@ if (!isset($_SESSION['user_id'])) {
                         
                         <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
                             <th>Aksi</th>
+                            <th>Hapus</th>
                         <?php endif; ?>
                     </tr>
                 </thead>
@@ -98,6 +99,14 @@ if (!isset($_SESSION['user_id'])) {
                                 echo "<td>";
                                 echo "<a href='edit_karakter.php?id=" . $row['id'] . "' class='btn-edit'>Edit</a>";
                                 echo "</td>";
+
+                                echo "<td style='display: flex; gap: 5px;'>"; // Pakai Flex biar tombolnya jejer rapi;
+    
+                                // Tombol Hapus (BARU)
+                                // Perhatikan: onclick="return confirm(...)" itu WAJIB ada biar gak kepencet.
+                                echo "<a href='hapus_karakter.php?id=" . $row['id'] . "' 
+                                        class='btn-hapus' 
+                                        onclick='return confirm(\"Yakin ingin menghapus karakter ini?\");'>Hapus</a>";
                             }
                 
                             echo "</tr>";
