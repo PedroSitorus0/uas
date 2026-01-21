@@ -1,5 +1,4 @@
-<?php 
-// 1. Session start WAJIB paling atas sebelum include apapun yang butuh sesi
+<?php
 session_start();
 require 'koneksi.php'; 
 
@@ -32,6 +31,21 @@ if (!isset($_SESSION['user_id'])) {
         .btn-edit:hover {
             background-color: #e67e22;
         }
+            /* Tambahkan ini di bawah class .btn-edit */
+    .btn-hapus {
+        background-color: #e74c3c; /* Warna Merah */
+        color: white;
+        padding: 5px 10px;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: bold;
+        display: inline-block;
+        margin-left: 5px; /* Jarak dikit dari tombol edit */
+    }
+    .btn-hapus:hover {
+        background-color: #c0392b; /* Merah Gelap pas di-hover */
+    }
     </style>
 </head>
 <body>
@@ -107,7 +121,7 @@ if (!isset($_SESSION['user_id'])) {
 
                             // Tombol Hapus (Ganti class jadi btn-hapus biar merah)
                             echo "<a href='hapus_karakter.php?id=" . $row['id'] . "' 
-                            class='btn-edit' 
+                            class='btn-hapus' 
                             onclick='return confirm(\"Yakin ingin menghapus karakter ini?\");'>Hapus</a>";
     
                             // 3. Tutup DIV & TD
