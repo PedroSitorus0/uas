@@ -62,7 +62,6 @@ if (!isset($_SESSION['user_id'])) {
                         
                         <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
                             <th>Aksi</th>
-                            <th>Hapus</th>
                         <?php endif; ?>
                     </tr>
                 </thead>
@@ -95,18 +94,25 @@ if (!isset($_SESSION['user_id'])) {
                             
                             // C. TOMBOL EDIT (Hanya Admin)
                             // Logika ini HARUS di dalam loop agar muncul di setiap baris
+                           // C. TOMBOL AKSI (Edit & Hapus dalam SATU KOLOM)
                             if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
-                                echo "<td>";
-                                echo "<a href='edit_karakter.php?id=" . $row['id'] . "' class='btn-edit'>Edit</a>";
-                                echo "</td>";
-
-                                echo "<td style='display: flex; gap: 5px;'>"; // Pakai Flex biar tombolnya jejer rapi;
+                            // 1. Buka TD sekali saja
+                            echo "<td>"; 
     
-                                // Tombol Hapus (BARU)
-                                // Perhatikan: onclick="return confirm(...)" itu WAJIB ada biar gak kepencet.
-                                echo "<a href='hapus_karakter.php?id=" . $row['id'] . "' 
-                                        class='btn-hapus' 
-                                        onclick='return confirm(\"Yakin ingin menghapus karakter ini?\");'>Hapus</a>";
+                            // 2. Buka DIV pembungkus biar rapi (Flexbox)
+                            echo "<div style='display: flex; gap: 5px; justify-content: center;'>";
+
+                            // Tombol Edit
+                            echo "<a href='edit_karakter.php?id=" . $row['id'] . "' class='btn-edit'>Edit</a>";
+
+                            // Tombol Hapus (Ganti class jadi btn-hapus biar merah)
+                            echo "<a href='hapus_karakter.php?id=" . $row['id'] . "' 
+                            class='btn-edit' 
+                            onclick='return confirm(\"Yakin ingin menghapus karakter ini?\");'>Hapus</a>";
+    
+                            // 3. Tutup DIV & TD
+                            echo "</div>";
+                            echo "</td>";
                             }
                 
                             echo "</tr>";
