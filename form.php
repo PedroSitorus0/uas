@@ -1,11 +1,16 @@
 <?php 
-    require_once 'koneksi.php'; 
-    header ("Location: login.php");
-    if (!isset($_SESSION['user_id'])) {
-    }
-    die();
-    
+session_start();
+require_once 'koneksi.php'; 
+
+// Cek apakah user BELUM login
+if (!isset($_SESSION['user_id'])) {
+    // tendang ke login.php
+    header("Location: login.php");
+    exit();
+}
+// Kalau sudah login, kode lanjut ke bawah (menampilkan form HTML)
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
     <head>

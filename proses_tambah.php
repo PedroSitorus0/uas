@@ -2,7 +2,7 @@
 // Matikan report error fatal
 mysqli_report(MYSQLI_REPORT_OFF); 
 include 'koneksi.php';
-
+// echo $_SERVER['SERVER_NAME'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // 1. AMBIL INPUT & SANITIZE

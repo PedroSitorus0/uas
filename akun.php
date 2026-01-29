@@ -7,7 +7,6 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
-
 $user_id = $_SESSION['user_id'];
 
 // 1. AMBIL DATA USER (Profil)
@@ -16,7 +15,7 @@ $result_user = mysqli_query($conn, $query_user);
 $user_data = mysqli_fetch_assoc($result_user);
 
 // 2. AMBIL DATA REQUEST (Relasi: Request milik User ini saja)
-$query_history = "SELECT * FROM requests WHERE user_id = '$user_id' ORDER BY created_at ASC";
+$query_history = "SELECT * FROM requests WHERE user_id = '$user_id' ORDER BY created_at DESC";
 $result_history = mysqli_query($conn, $query_history);
 
 // echo $user_id;

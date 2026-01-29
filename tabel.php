@@ -87,7 +87,7 @@ if (!isset($_SESSION['user_id'])) {
                     $query = "SELECT characters.*, bands.nama_band 
                               FROM characters 
                               JOIN bands ON characters.band_id = bands.id 
-                              ORDER BY characters.id DESC";
+                              ORDER BY characters.id ASC";
                     
                     $result = mysqli_query($conn, $query);
                 

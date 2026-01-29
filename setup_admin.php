@@ -1,5 +1,9 @@
 <?php
 include 'koneksi.php';
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
+    echo "<script>alert('Anda bukan Admin!'); window.location='akun.php';</script>";
+    exit();
+}
 
 $username = "admin";
 $password = "admin123"; // Password teks biasa

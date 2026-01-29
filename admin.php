@@ -3,7 +3,7 @@ session_start();
 include 'koneksi.php';
 
 // 1. KEAMANAN: Cek apakah user sudah login DAN role-nya admin
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
+if (!isset($_SESSION['user_id']) ||  $_SESSION['role'] != 'admin') {
     echo "<script>alert('Anda bukan Admin!'); window.location='akun.php';</script>";
     exit();
 }

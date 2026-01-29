@@ -17,7 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mysqli_num_rows($cek_user) > 0) {
             $error = "Username sudah terdaftar!";
         } else {
-            // PERUBAHAN DISINI: Jangan pakai password_hash!
             // Langsung masukkan $password asli ke query
             $query = "INSERT INTO users (username, email, password, role) VALUES ('$username', '$email', '$password', 'user')";
             
